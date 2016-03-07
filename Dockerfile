@@ -2,6 +2,9 @@ FROM ubuntu:12.04
 
 MAINTAINER Chris Burr
 
+# Replace sh with bash
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+
 # Install dependencies
 RUN apt-get update && apt-get -y install git dpkg-dev make g++ gcc binutils \
     libx11-dev libxpm-dev libxft-dev libxext-dev gfortran libssl-dev \
