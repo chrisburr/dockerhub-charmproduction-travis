@@ -65,10 +65,24 @@ RUN export PATH="$HOME/miniconda/bin:$PATH" && \
     source activate test-environment && \
     wget --no-check-certificate https://root.cern.ch/download/root_v6.04.14.source.tar.gz && \
     tar -xf root_v6.04.14.source.tar.gz && \
-    mkdir build && \
+    mkdir build
+
+RUN export PATH="$HOME/miniconda/bin:$PATH" && \
+    hash -r && \
+    source activate test-environment && \
     cd build && \
-    cmake ../root-6.04.14 && \
-    cmake --build . && \
-    cmake --build . --target install && \
-    cd .. && \
-    rm -rf root-6.04.14 build root_v6.04.14.source.tar.gz
+    cmake ../root-6.04.14
+
+RUN export PATH="$HOME/miniconda/bin:$PATH" && \
+    hash -r && \
+    source activate test-environment && \
+    cd build && \
+    cmake --build .
+
+RUN export PATH="$HOME/miniconda/bin:$PATH" && \
+    hash -r && \
+    source activate test-environment && \
+    cd build && \
+    cmake --build . --target install
+
+RUN rm -r root-6.04.14 build root_v6.04.14.source.tar.gz
