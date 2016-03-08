@@ -66,8 +66,9 @@ RUN export PATH="$HOME/miniconda/bin:$PATH" && \
     wget --no-check-certificate https://root.cern.ch/download/root_v6.04.14.source.tar.gz && \
     tar -xf root_v6.04.14.source.tar.gz && \
     mkdir build && \
+    cd build && \
     cmake ../root-6.04.14 && \
     cmake --build . && \
     cmake --build . --target install && \
     cd .. && \
-    rm -r root-6.04.14 build root_v6.04.14.source.tar.gz
+    rm -rf root-6.04.14 build root_v6.04.14.source.tar.gz
